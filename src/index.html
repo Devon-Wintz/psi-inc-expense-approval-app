@@ -4,7 +4,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 </head>
 <body style="overflow: hidden; background-color: rgba(0,0,0,0); margin: 0" >
-  <div id="App"></div>
+  <div id="Root"></div>
 </body>
 
 <script>window.exports = module.exports</script>
@@ -14,11 +14,11 @@
   import {AppContainer} from 'react-hot-loader';
 
   let render = () => {
-    const App = require('./App').default;
+    const Root = require('./Root').default;
 
     ReactDOM.render(
-      <AppContainer><App /></AppContainer>,
-      document.getElementById('App')
+      <AppContainer><Root /></AppContainer>,
+      document.getElementById('Root')
     );
   }
 
