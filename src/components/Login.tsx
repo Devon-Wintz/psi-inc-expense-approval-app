@@ -9,7 +9,7 @@ export interface ILoginState {
   pin: string;
 }
 
-class Login extends Component<undefined, ILoginState> {
+class Login extends Component<{}, ILoginState> {
   public state: ILoginState = {
     employeeId: '',
     pin: ''
