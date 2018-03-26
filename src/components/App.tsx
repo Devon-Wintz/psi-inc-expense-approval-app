@@ -1,30 +1,16 @@
 import * as React from 'react';
 import { Component } from 'react';
-import Store = require('electron-store');
+import { TokenConsumer } from '../contexts';
 import Login from './Login';
 import Main from './Main';
 
-export interface IAppState {
-  jwt: string;
-}
-
-class App extends Component<{}, IAppState> {
-  public state = { jwt: '' };
-
-  public componentDidMount(): void {
-    const store: Store = new Store();
-    const jwt: string = store.get('jwt', '');
-    this.setState({ jwt });
-  }
-
+class App extends Component<{}, {}> {
   public render() {
-    const { jwt } = this.state;
-
-    if (jwt) {
-      return <Main jwt={jwt} />;
-    } else {
-      return <Login />;
-    }
+    return (
+      <TokenConsumer>
+        {value => (value ? <Main token={value} /> : <Login />)}
+      </TokenConsumer>
+    );
   }
 }
 

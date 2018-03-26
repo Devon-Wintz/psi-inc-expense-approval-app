@@ -3,7 +3,7 @@ import { Component } from 'react';
 import Loading from './Loading';
 
 export interface IMainProps {
-  jwt: string;
+  token: string;
 }
 
 export interface IMainState {

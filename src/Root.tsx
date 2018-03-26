@@ -1,11 +1,14 @@
 import * as React from 'react';
 import { SFC } from 'react';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
+import { TokenProvider } from './contexts';
 import App from './components/App';
 
 const Root: SFC<{}> = () => (
   <Fabric>
-    <App />
+    <TokenProvider>
+      <App />
+    </TokenProvider>
   </Fabric>
 );
 
