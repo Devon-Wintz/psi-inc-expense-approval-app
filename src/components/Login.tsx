@@ -4,12 +4,16 @@ import { DocumentCard, DocumentCardTitle } from 'office-ui-fabric-react';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { DefaultButton } from 'office-ui-fabric-react';
 
+export interface ILoginProps {
+  setToken: (token: string) => void;
+}
+
 export interface ILoginState {
   employeeId: string;
   pin: string;
 }
 
-class Login extends Component<{}, ILoginState> {
+class Login extends Component<ILoginProps, ILoginState> {
   public state: ILoginState = {
     employeeId: '',
     pin: ''
@@ -37,7 +41,7 @@ class Login extends Component<{}, ILoginState> {
       <div className="Login">
         <DocumentCard className="LoginCard">
           <DocumentCardTitle title="Login" />
-          <form action="">
+          <form action="" onSubmit={event => event.preventDefault()}>
             <TextField
               label="Employee ID"
               autoComplete="on"

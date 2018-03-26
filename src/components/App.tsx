@@ -8,7 +8,9 @@ class App extends Component<{}, {}> {
   public render() {
     return (
       <TokenConsumer>
-        {value => (value ? <Main token={value} /> : <Login />)}
+        {({ token, setToken }) =>
+          token ? <Main token={token} /> : <Login setToken={setToken} />
+        }
       </TokenConsumer>
     );
   }
