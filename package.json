@@ -2,7 +2,7 @@
   "name": "psi-inc-expense-approval-app",
   "productName": "psi-inc-expense-approval-app",
   "version": "0.0.0",
-  "description": "PSI Inc. Expense Approval Application -as part of CSE 3203 group project.",
+  "description": "PSI Inc. Expense Approval Application --as part of CSE3203 Group Project.",
   "main": "src/index.ts",
   "scripts": {
     "start": "electron-forge start",
