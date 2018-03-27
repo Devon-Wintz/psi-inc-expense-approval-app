@@ -9,7 +9,6 @@
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
-    "lint": "tslint --project tsconfig.json --type-check --force",
     "prettier": "prettier --single-quote --write 'src/**/*.tsx'"
   },
   "config": {
@@ -66,7 +65,6 @@
     "electron-forge": "^5.1.1",
     "electron-prebuilt-compile": "1.8.3",
     "prettier": "^1.11.1",
-    "tslint": "^5.9.1",
     "typescript": "^2.7.2"
   }
 }
