@@ -62,8 +62,17 @@ class Login extends Component<ILoginProps, ILoginState> {
     this.validateEmployeeId(credentials.employeeId) &&
     this.validatePin(credentials.pin);
 
+  private login = (credentials: ICredentials): void => {
+    this.setState({ loading: true });
+
+    // authenticate against login API
+    setTimeout(() => {
+      this.props.setToken(credentials.employeeId);
+    }, 1500);
+  };
+
   public render() {
-    const { credentials } = this.state;
+    const { loading, credentials } = this.state;
 
     return (
       <div className="Login">
@@ -77,6 +86,7 @@ class Login extends Component<ILoginProps, ILoginState> {
               onGetErrorMessage={this.employeeIdOnGetErrorMessage}
               validateOnLoad={false}
               deferredValidationTime={1000}
+              disabled={loading}
             />
             <TextField
               label="PIN"
@@ -84,6 +94,7 @@ class Login extends Component<ILoginProps, ILoginState> {
               onGetErrorMessage={this.pinOnGetErrorMessage}
               validateOnLoad={false}
               deferredValidationTime={1000}
+              disabled={loading}
             />
             <div className="LoginCardButton">
               <DefaultButton
@@ -92,6 +103,7 @@ class Login extends Component<ILoginProps, ILoginState> {
                 disabled={!this.validateCredentials(credentials)}
                 onClick={event => {
                   event.preventDefault();
+                  this.login(credentials);
                 }}
               />
             </div>
