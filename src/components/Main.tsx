@@ -2,9 +2,16 @@ import * as React from 'react';
 import { Component } from 'react';
 import Loading from './Loading';
 
+export enum UserRole {
+  Requester = 'Requester',
+  Approver = 'Approver',
+  Administrator = 'Administrator',
+  Procurement = 'Procurement'
+}
+
 export interface IUserInfo {
   employeeId: string;
-  role: string;
+  role: UserRole | string;
   name: string;
   position: string;
 }
@@ -35,7 +42,7 @@ class Main extends Component<IMainProps, IMainState> {
         loading: false,
         userInfo: {
           employeeId: '123456',
-          role: 'Requester',
+          role: UserRole.Requester,
           name: 'Rajendra Tiwari',
           position: 'Supervisor'
         }
@@ -48,12 +55,21 @@ class Main extends Component<IMainProps, IMainState> {
   }
 
   render() {
-    const { loading } = this.state;
+    const { loading, userInfo } = this.state;
 
     if (loading) {
       return <Loading />;
     } else {
-      return <div className="Main">Main</div>;
+      // render appropriate component for user's role
+      const { Requester } = UserRole;
+
+      switch (userInfo.role) {
+        case Requester:
+          return <div>Requester</div>;
+
+        default:
+          return null;
+      }
     }
   }
 }
